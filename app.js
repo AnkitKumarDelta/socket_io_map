@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
   socket.on('send-location', (message) => {
     console.log('Location received from:', socket.id, message);
     // Broadcast location to all connected clients except sender
-    socket.broadcast.emit('receive-location', { id: socket.id, ...message });
+    io.emit('receive-location', { id: socket.id, ...message });
   });
 
   // Handle disconnection event

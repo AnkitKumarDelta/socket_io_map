@@ -1,4 +1,6 @@
 const socket = io();
+// Object to store markers
+const markers = {};
 
 // Listen for "receive-location" event from server
 socket.on('receive-location', (data) => {
@@ -53,11 +55,8 @@ if (navigator.geolocation) {
 }
 
 // Initialize Leaflet map
-const map = L.map('map').setView([0, 0], 16);
+const map = L.map('map').setView([0, 0], 2);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: 'Your attribution here',
 }).addTo(map);
-
-// Object to store markers
-const markers = {};
